@@ -2,15 +2,19 @@ import { initializeStore, paginate, configurePageParams } from '@orange-marmalad
 import { fetchCreator } from './api';
 
 configurePageParams({
-  perPage: 'results_per_page',
-  sortOrder: 'sort_reverse'
+  perPage: ''
 });
 
 function fetchRecipes(pageInfo) {
-  return () => fetchCreator('/documentation/#get-all-characters')(pageInfo.query)
+  return () => fetchCreator('/character/')(pageInfo.query).then(({data}) => ({
+  	data: {
+        total_count: data.info.count,
+        results: data.results
+     }
+  }))
 }
 
-initializeStore()
+initializeStore();
 paginate({ 
 	listId: 'recipeGrid', 
 	fetch: fetchRecipes 

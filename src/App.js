@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Pagnation from 'Pagination'
+import Pagination from './Pagination';
 import './App.css';
 
 class App extends Component {
@@ -9,7 +9,7 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Front end test MU</h1>
         </header>
-        <Pagnation listId=""/>
+        <Pagination listId="recipeGrid" />
       </div>
     );
   }

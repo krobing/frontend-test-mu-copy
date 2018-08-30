@@ -17,6 +17,7 @@
     "@orange-marmalade/paginate-this": "^4.0.0-beta-19",
     "axios": "^0.18.0",
     "humps": "^2.0.1",
+    "immutable": "^3.7.6",
     "lodash": "^4.17.10"
   }
 }

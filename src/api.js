@@ -1,15 +1,15 @@
 import axios from 'axios';
 import { camelizeKeys } from 'humps';
 
-const API_ROOT = `https://rickandmortyapi.com`;
+const API_ROOT = `https://rickandmortyapi.com/api`;
 
 // create http api with axios to consume resources
 export const httpApi = axios.create({
     baseURL: API_ROOT,
-    xsrfHeaderName: 'X-CSRF-TOKEN',
-    headers: {
-        "X-Requested-With": "XMLHttpRequest"
-    }
+    xsrfHeaderName: 'X-CSRF-TOKEN'
+    // headers: {
+    //     "X-Requested-With": "XMLHttpRequest"
+    // }
 });
 
 /**
@@ -25,6 +25,7 @@ const callApi = ({ endpoint:fullUrl, data, meta }) => {
     let setConfig = {
         method: (meta && meta.method) || 'get'
     };
+    console.log( setConfig );
     if(/^(PUT|POST|PATCH)$/i.test(meta && meta.method)) {
         setConfig['data'] = data;
     }else {
@@ -59,7 +60,7 @@ export function fetchCreator(endpointAlt) {
 
 	    return callApi({ endpoint, data }).then(
 	        response => ({
-	            type: successType,
+	            type: 'success_request',
 	            data: response
 	        }),
 	        error => {
